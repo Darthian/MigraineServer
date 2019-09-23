@@ -1,0 +1,117 @@
+(Para que pueda ser rest de todo el proy agregar springBoot)
+
+1. registrar episodio:
+Se deben enviar 2 campos, los cuales representan el archivo y los datos.
+
+El archivo debe llegar en la variable "file"
+Los datos deben venor en formato Json sobre la variablle "data"
+
+
+Datos adicionales:
+
+Tipo: POST
+Servicio: http://localhost:8080/episode/register
+Cuerpo Json: (variable data)
+{	
+    "painLevel": 3,
+    "sleepPattern": "poco",
+    "foods": [
+        {
+            "id": 3
+        },
+        {
+            "id": 2
+        }
+    ],
+    "locations": [
+		{
+			"id": 1
+		},
+		{
+			"id": 2
+		}
+	],
+    "medicines": [
+		{
+			"id": 1
+		},
+		{
+			"id": 2
+		}
+	],
+    "physicalActivity": [
+		{
+			"id": 2
+		},
+		{
+			"id": 3
+		}
+	],
+	"user" : {
+		"documentNumber" : "1014207336"
+	}
+}
+
+Pruebas con postman:
+1.1. No se requiere ningun Header.
+1.2. Escoger en Body la opción "form-data"
+1.3. crear la key file de tipo File y asociar una archivo.
+1.4. crear la key data de tipo texto y asociar el Json.
+
+2. Consultar los episodios de un paciente
+
+Tipo: GET
+Servicio: http://localhost:8080/episode/patient/1014207336
+
+3. Consultar episodio especifico
+
+Tipo: GET
+Servicio: http://localhost:8080/episode/1
+
+4. Descargar archivo migraña
+Tipo: GET
+Servicio: http://localhost:8080/episode/download/2
+
+5. Registrar un diagnostico
+Tipo: POST
+Servicio: http://localhost:8080/diagnostic/register
+Cuerpo Json:
+{	
+    "episode": {
+		"id" : "2"
+	},
+	"user": {
+		"documentNumber" : "1014207335"
+	},
+    "foods": [
+        {
+            "id": 4
+        },
+        {
+            "id": 5
+        }
+    ],
+    "medicines": [
+		{
+			"id": 1
+		},
+		{
+			"id": 2
+		}
+	],
+    "physicalActivity": [
+		{
+			"id": 1
+		},
+		{
+			"id": 3
+		}
+	]
+}
+
+Pruebas con postman:
+1.1. Headers:
+Content-Type application/json
+Accept  application/json
+
+1.2. Escoger en Body la opción "raw" y tipo JSON
